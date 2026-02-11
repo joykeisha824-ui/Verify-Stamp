@@ -1,3 +1,12 @@
+// Set Institution Name
+let institution = localStorage.getItem("institutionName");
+
+if (!institution) {
+    institution = "University of the District of Columbia";
+    localStorage.setItem("institutionName", institution);
+}
+
+document.getElementById("institutionName").innerText = institution + " Dashboard";
 <!DOCTYPE html>
 <html>
 <head>
