@@ -115,6 +115,44 @@ function loadCredentials() {
 
 loadCredentials();
 </script>
+<script>
+function loadCredentials() {
+    let credentials = JSON.parse(localStorage.getItem("credentials")) || [];
+    let logs = JSON.parse(localStorage.getItem("verificationLogs")) || [];
+
+    document.getElementById("totalCount").innerText = credentials.length;
+
+    let listHTML = "";
+    credentials.forEach(c => {
+        listHTML += `
+            <div style="margin-bottom:15px;">
+                <strong>${c.name}</strong><br>
+                ${c.title}<br>
+                <small>ID: ${c.id}</small><br>
+                <a href="verify.html?id=${c.id}" target="_blank">
+                    Verification Link
+                </a>
+                <hr>
+            </div>
+        `;
+    });
+    document.getElementById("credentialList").innerHTML = listHTML;
+
+    let logHTML = "";
+    logs.slice().reverse().forEach(l => {
+        logHTML += `
+            <div style="margin-bottom:10px;">
+                ${l.name}'s credential verified<br>
+                <small>${l.time}</small>
+                <hr>
+            </div>
+        `;
+    });
+    document.getElementById("logList").innerHTML = logHTML;
+}
+
+loadCredentials();
+</script>
 
 </body>
 </html>
