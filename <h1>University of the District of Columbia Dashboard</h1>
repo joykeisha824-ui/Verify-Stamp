@@ -1,71 +1,19 @@
-// Set Institution Name
-let institution = localStorage.getItem("institutionName");
-
-if (!institution) {
-    institution = "University of the District of Columbia";
-    localStorage.setItem("institutionName", institution);
-}
-
-document.getElementById("institutionName").innerText = institution + " Dashboard";
 <!DOCTYPE html>
 <html>
 <head>
-<title>Dashboard - Verify Stamp</title>
+<title>Verify Stamp University Dashboard</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
 <style>
-body {
-    font-family: 'Inter', sans-serif;
-    margin:0;
-    background:#F9FAFB;
-}
-
-/* Sidebar */
-.sidebar {
-    width:220px;
-    background:#111111;
-    color:white;
-    height:100vh;
-    position:fixed;
-    padding:30px;
-}
-
-.sidebar h2 {
-    margin-top:0;
-}
-
-.sidebar a {
-    display:block;
-    color:white;
-    text-decoration:none;
-    margin-top:20px;
-    font-size:14px;
-}
-
-/* Main Content */
-.main {
-    margin-left:240px;
-    padding:40px;
-}
-
-.card {
-    background:white;
-    padding:30px;
-    border-radius:8px;
-    margin-bottom:30px;
-    box-shadow:0 5px 15px rgba(0,0,0,0.04);
-}
-
-button {
-    padding:12px 20px;
-    background:black;
-    color:white;
-    border:none;
-    border-radius:6px;
-    cursor:pointer;
-}
+body { font-family: 'Inter', sans-serif; margin:0; background:#F9FAFB; }
+.sidebar { width:220px; background:#111111; color:white; height:100vh; position:fixed; padding:30px; }
+.sidebar h2 { margin-top:0; }
+.sidebar a { display:block; color:white; text-decoration:none; margin-top:20px; font-size:14px; }
+.main { margin-left:240px; padding:40px; }
+.card { background:white; padding:30px; border-radius:8px; margin-bottom:30px; box-shadow:0 5px 15px rgba(0,0,0,0.04); }
+.card h3 { margin-top:0; }
+button { padding:12px 20px; background:black; color:white; border:none; border-radius:6px; cursor:pointer; }
 </style>
 </head>
-
 <body>
 
 <div class="sidebar">
@@ -77,7 +25,7 @@ button {
 </div>
 
 <div class="main">
-    <h1>Institution Dashboard</h1>
+    <h1 id="institutionName">Dashboard</h1>
 
     <div class="card">
         <h3>Total Credentials Issued</h3>
@@ -88,67 +36,50 @@ button {
         <h3>Issued Credentials</h3>
         <div id="credentialList"></div>
     </div>
-<div class="card">
-    <h3>Recent Verification Activity</h3>
-    <div id="logList"></div>
-</div>
 
-    <button onclick="window.location.href='issue.html'">
-        Issue New Credential
-    </button>
+    <div class="card">
+        <h3>Recent Verification Activity</h3>
+        <div id="logList"></div>
+    </div>
+
+    <button onclick="window.location.href='issue.html'">Issue New Credential</button>
 </div>
 
 <script>
-function loadCredentials() {
-    let credentials = JSON.parse(localStorage.getItem("credentials")) || [];
-    document.getElementById("totalCount").innerText = credentials.length;
-
-    let listHTML = "";
-
-    credentials.forEach(c => {
-        listHTML += `
-            <div style="margin-bottom:15px;">
-                <strong>${c.name}</strong><br>
-                ${c.title}<br>
-                <small>ID: ${c.id}</small><br>
-                <a href="verify.html?id=${c.id}" target="_blank">
-                    Verification Link
-                </a>
-                <hr>
-            </div>
-        `;
-    });
-
-    document.getElementById("credentialList").innerHTML = listHTML;
+// Set Institution Name
+let institution = localStorage.getItem("institutionName");
+if (!institution) {
+    institution = "Verify Stamp University";
+    localStorage.setItem("institutionName", institution);
 }
+document.getElementById("institutionName").innerText = institution + " Dashboard";
 
-loadCredentials();
-</script>
-<script>
-function loadCredentials() {
+// Load credentials and verification logs
+function loadDashboard() {
     let credentials = JSON.parse(localStorage.getItem("credentials")) || [];
     let logs = JSON.parse(localStorage.getItem("verificationLogs")) || [];
 
+    // Update counts
     document.getElementById("totalCount").innerText = credentials.length;
 
+    // Populate credentials list
     let listHTML = "";
     credentials.forEach(c => {
         listHTML += `
             <div style="margin-bottom:15px;">
                 <strong>${c.name}</strong><br>
-                ${c.title}<br>
+                ${c.title || c.degree || ""}<br>
                 <small>ID: ${c.id}</small><br>
-                <a href="verify.html?id=${c.id}" target="_blank">
-                    Verification Link
-                </a>
+                <a href="verify.html?id=${c.id}" target="_blank">Verification Link</a>
                 <hr>
             </div>
         `;
     });
     document.getElementById("credentialList").innerHTML = listHTML;
 
+    // Populate recent verification logs (last 5)
     let logHTML = "";
-    logs.slice().reverse().forEach(l => {
+    logs.slice(-5).reverse().forEach(l => {
         logHTML += `
             <div style="margin-bottom:10px;">
                 ${l.name}'s credential verified<br>
@@ -160,7 +91,8 @@ function loadCredentials() {
     document.getElementById("logList").innerHTML = logHTML;
 }
 
-loadCredentials();
+// Load dashboard on page load
+loadDashboard();
 </script>
 
 </body>
