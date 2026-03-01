@@ -51,7 +51,37 @@ button {
 }
 </style>
 </head>
+<script>
+// Set Institution Name
+let institution = localStorage.getItem("institutionName");
+if (!institution) {
+    institution = "Verify Stamp University";
+    localStorage.setItem("institutionName", institution);
+}
+document.getElementById("institutionName").innerText = institution + " Dashboard";
 
+// Load credentials
+let credentials = JSON.parse(localStorage.getItem("credentials")) || [];
+
+// Update dashboard counts
+document.getElementById("credentialCount").innerText = credentials.length;
+
+// Count unique students
+let students = [...new Set(credentials.map(c => c.name))];
+document.getElementById("studentCount").innerText = students.length;
+
+// Verification requests (simulated)
+document.getElementById("verificationCount").innerText = Math.floor(Math.random()*10);
+
+// Populate activity table
+let tbody = document.getElementById("activityTable").querySelector("tbody");
+tbody.innerHTML = "";
+credentials.slice(-5).reverse().forEach(c => {
+    let tr = document.createElement("tr");
+    tr.innerHTML = `<td>${c.id}</td><td>${c.name}</td><td>${c.degree}</td><td>${c.issuedDate}</td><td class="status-verified">Verified</td>`;
+    tbody.appendChild(tr);
+});
+</script>
 <body>
 
 <div class="sidebar">
@@ -63,33 +93,40 @@ button {
 </div>
 
 <div class="main">
+   <div class="main">
     <h1 id="institutionName">Dashboard</h1>
 
-    <div class="card">
-        <h3>Total Credentials Issued</h3>
-        document.getElementById("credentialCount").innerText = credentials.length;
+    <div class="card-container">
+        <div class="card">
+            <h4>Total Credentials Issued</h4>
+            <h1 id="credentialCount">0</h1>
+        </div>
+        <div class="card">
+            <h4>Active Students</h4>
+            <h1 id="studentCount">0</h1>
+        </div>
+        <div class="card">
+            <h4>Verification Requests</h4>
+            <h1 id="verificationCount">0</h1>
+        </div>
     </div>
 
-    <div class="card">
-        <h3>Recent Verification Requests</h3>
-        <p>5 new requests in the last 24 hours</p>
-    </div>
+    <h2>Recent Activity</h2>
+    <table id="activityTable">
+        <thead>
+            <tr>
+                <th>Credential ID</th>
+                <th>Student</th>
+                <th>Degree</th>
+                <th>Date</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Rows inserted by JS -->
+        </tbody>
+    </table>
 
+    <br>
     <button onclick="window.location.href='issue.html'">Issue New Credential</button>
 </div>
-<script>
-// Set Institution Name
-let institution = localStorage.getItem("institutionName");
-
-if (!institution) {
-    institution = "Verify Stamp University";
-    localStorage.setItem("institutionName", institution);
-}
-
-document.getElementById("institutionName").innerText = institution + " Dashboard";
-
-// Update Credential Count
-let credentials = JSON.parse(localStorage.getItem("credentials")) || [];
-document.querySelector(".card p").innerText = credentials.length;
-</script></body>
-</html>
