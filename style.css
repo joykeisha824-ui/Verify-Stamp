@@ -46,3 +46,5 @@ input, select {
     border-radius: 6px;
     border: 1px solid #ccc;
 }
+.valid { color: green; font-weight: bold; }
+.invalid { color: red; font-weight: bold; }
