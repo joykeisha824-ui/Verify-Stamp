@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Verify Stamp University Dashboard</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="sidebar">
+    <h2>Verify Stamp</h2>
+    <a href="dashboard.html">Dashboard</a>
+    <a href="issue.html">Issue Credential</a>
+</div>
+
+<div class="main">
+    <h1 id="institutionName">Dashboard</h1>
+
+    <div class="card">
+        <h3>Total Credentials Issued</h3>
+        <p id="totalCount">0</p>
+    </div>
+
+    <div class="card">
+        <h3>Issued Credentials</h3>
+        <div id="credentialList"></div>
+    </div>
+
+    <div class="card">
+        <h3>Recent Verification Activity</h3>
+        <div id="logList"></div>
+    </div>
+</div>
+
+<script>
+// Set Institution Name
+let institution = localStorage.getItem("institutionName") || "Verify Stamp University";
+localStorage.setItem("institutionName", institution);
+document.getElementById("institutionName").innerText = institution + " Dashboard";
+
+// Load credentials and logs
+function loadDashboard() {
+    let credentials = JSON.parse(localStorage.getItem("credentials")) || [];
+    let logs = JSON.parse(localStorage.getItem("verificationLogs")) || [];
+
+    // Update total count
+    document.getElementById("totalCount").innerText = credentials.length;
+
+    // Populate credential list
+    let credHTML = "";
+    credentials.slice().reverse().forEach(c => {
+        credHTML += `<div><strong>${c.name}</strong> - ${c.title}<br>ID: ${c.id}<hr></div>`;
+    });
+    document.getElementById("credentialList").innerHTML = credHTML;
+
+    // Populate verification logs (last 5)
+    let logHTML = "";
+    logs.slice(-5).reverse().forEach(l => {
+        logHTML += `<div>${l.name} verified<br><small>${l.time}</small><hr></div>`;
+    });
+    document.getElementById("logList").innerHTML = logHTML;
+}
+
+loadDashboard();
+</script>
+
+</body>
+</html>
