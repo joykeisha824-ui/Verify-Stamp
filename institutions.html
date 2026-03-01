@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Dashboard - Verify Stamp</title>
+<title>Verify Stamp University</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
 <style>
 body {
@@ -63,7 +63,7 @@ button {
 </div>
 
 <div class="main">
-    <h1>Institution Dashboard</h1>
+    <h1 id="institutionName">Dashboard</h1>
 
     <div class="card">
         <h3>Total Credentials Issued</h3>
@@ -77,6 +77,19 @@ button {
 
     <button onclick="window.location.href='issue.html'">Issue New Credential</button>
 </div>
+<script>
+// Set Institution Name
+let institution = localStorage.getItem("institutionName");
 
-</body>
+if (!institution) {
+    institution = "Verify Stamp University";
+    localStorage.setItem("institutionName", institution);
+}
+
+document.getElementById("institutionName").innerText = institution + " Dashboard";
+
+// Update Credential Count
+let credentials = JSON.parse(localStorage.getItem("credentials")) || [];
+document.querySelector(".card p").innerText = credentials.length;
+</script></body>
 </html>
