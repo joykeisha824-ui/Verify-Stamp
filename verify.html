@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Verify Credential - Verify Stamp</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="sidebar">
+    <h2>Verify Stamp</h2>
+    <a href="dashboard.html">Dashboard</a>
+    <a href="issue.html">Issue Credential</a>
+</div>
+
+<div class="main">
+    <h1>Credential Verification</h1>
+    <div class="card" id="result"></div>
+</div>
+
+<script>
+function getQueryParam(param) {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(param);
+}
+
+const id = getQueryParam("id");
+let credentials = JSON.parse(localStorage.getItem("credentials")) || [];
+let logs = JSON.parse(localStorage.getItem("verificationLogs")) || [];
+
+const found = credentials.find(c => c.id === id);
+
+if(found){
+    // Add verification log
+    logs.push({
+        id: found.id,
+        name: found.name,
+        time: new Date().toLocaleString()
+    });
+    localStorage.setItem("verificationLogs", JSON.stringify(logs));
+
+    document.getElementById("result").innerHTML = `
+        <p class="valid">✔ Credential Verified</p>
+        <p><strong>Name:</strong> ${found.name}</p>
+        <p><strong>Credential:</strong> ${found.title}</p>
+        <p><strong>Issued:</strong> ${found.issuedDate}</p>
+        <p><strong>ID:</strong> ${found.id}</p>
+    `;
+} else {
+    document.getElementById("result").innerHTML = `
+        <p class="invalid">✘ Credential Not Found</p>
+    `;
+}
+</script>
+</body>
+</html>
