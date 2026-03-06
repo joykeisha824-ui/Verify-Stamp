@@ -1,231 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Verify Stamp</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+<title>Verify Stamp</title>
 
-  <style>
-    :root {
-      --cream: #f8f6ff;
-      --white: #ffffff;
-      --black: #14141c;
-      --charcoal: #2a2a35;
-      --lilac: #c8a2ff;
-      --lilac-dark: #a874ff;
-      --soft-gray: #6b6b7a;
-      --gradient: linear-gradient(135deg, #c8a2ff, #a874ff);
-    }
+<link rel="stylesheet" href="style.css">
 
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: var(--cream);
-      color: var(--black);
-    }
-
-    a {
-      text-decoration: none;
-      color: var(--lilac-dark);
-    }
-
-    /* ===== HEADER ===== */
-    header {
-      position: sticky;
-      top: 0;
-      background: var(--white);
-      padding: 15px 40px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 1px solid rgba(168,116,255,0.2);
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-      z-index: 100;
-    }
-
-    header nav a {
-      margin-left: 25px;
-      font-weight: 600;
-      transition: 0.3s;
-      color: var(--charcoal);
-    }
-
-    header nav a:hover {
-      color: var(--lilac-dark);
-    }
-
-    .logo-container {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .logo-container img {
-      height: 45px;
-    }
-
-    .logo-container h1 {
-      margin: 0;
-      background: var(--gradient);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      font-weight: 700;
-    }
-
-    /* ===== HERO ===== */
-    .hero {
-      text-align: center;
-      padding: 120px 20px;
-      background: var(--cream);
-    }
-
-    .hero h2 {
-      font-size: 52px;
-      margin-bottom: 20px;
-      color: var(--black);
-    }
-
-    .hero p {
-      font-size: 18px;
-      max-width: 650px;
-      margin: 0 auto 40px auto;
-      color: var(--soft-gray);
-    }
-
-    .btn {
-      background: var(--gradient);
-      color: white;
-      padding: 15px 35px;
-      border-radius: 50px;
-      font-weight: bold;
-      display: inline-block;
-      transition: 0.3s;
-      box-shadow: 0 5px 15px rgba(200,162,255,0.3);
-    }
-
-    .btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(200,162,255,0.5);
-    }
-
-    /* ===== FEATURES ===== */
-    .features {
-      display: flex;
-      justify-content: center;
-      gap: 40px;
-      padding: 80px 20px;
-      flex-wrap: wrap;
-      background: var(--cream);
-    }
-
-    .card {
-      background: var(--white);
-      padding: 35px;
-      border-radius: 16px;
-      width: 300px;
-      text-align: center;
-      border: 1px solid rgba(200,162,255,0.15);
-      transition: 0.3s;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.04);
-    }
-
-    .card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 10px 30px rgba(200,162,255,0.15);
-    }
-
-    .card i {
-      font-size: 48px;
-      margin-bottom: 15px;
-      color: var(--lilac-dark);
-    }
-
-    .card h3 {
-      font-size: 22px;
-      margin-bottom: 10px;
-      color: var(--lilac-dark);
-    }
-
-    .card p {
-      color: var(--soft-gray);
-      font-size: 16px;
-    }
-
-    /* ===== FOOTER ===== */
-    footer {
-      text-align: center;
-      padding: 40px;
-      background: var(--white);
-      border-top: 1px solid rgba(168,116,255,0.2);
-      color: var(--soft-gray);
-    }
-
-    footer .social a {
-      margin: 0 10px;
-      font-size: 20px;
-      color: var(--lilac-dark);
-      transition: 0.3s;
-    }
-
-    footer .social a:hover {
-      color: var(--black);
-    }
-  </style>
 </head>
 
 <body>
 
-<header>
-  <div class="logo-container">
-    <img src="./logo.png" alt="Verify Stamp Logo">
-    <h1>Verify Stamp</h1>
-  </div>
+<!-- NAVBAR -->
 
-  <nav>
-    <a href="#">Students</a>
-    <a href="#">Institutions</a>
-    <a href="#">Verify</a>
-    <a href="#">Login</a>
-  </nav>
+<header class="navbar">
+
+<div class="logo">
+<img src="Verify Stamp Logo.png" alt="Verify Stamp Logo">
+<span>Verify Stamp</span>
+</div>
+
+<nav>
+<a href="#">Students</a>
+<a href="#">Institutions</a>
+<a href="verify.html">Verify</a>
+<a href="#">Login</a>
+</nav>
+
 </header>
 
+<!-- HERO SECTION -->
+
 <section class="hero">
-  <h2>Secure. Verified. Protected.</h2>
-  <p>
-    Verify Stamp empowers institutions while giving students full ownership of their credentials.
-  </p>
-  <a href="#" class="btn">Verify a Credential</a>
+
+<h1>Secure. Verified. Protected.</h1>
+
+<p>
+Empowering institutions and giving students control of their credentials.
+</p>
+
+<a href="verify.html" class="btn">
+Verify a Credential
+</a>
+
 </section>
+
+<!-- FEATURES -->
 
 <section class="features">
-  <div class="card">
-    <i class="fas fa-wallet"></i>
-    <h3>Student Ownership</h3>
-    <p>Wallet-based credential control and full portability.</p>
-  </div>
 
-  <div class="card">
-    <i class="fas fa-shield-alt"></i>
-    <h3>Institution Protection</h3>
-    <p>Reduce legal exposure and share verified credentials securely.</p>
-  </div>
+<div class="card">
 
-  <div class="card">
-    <i class="fas fa-check-circle"></i>
-    <h3>Independent Verification</h3>
-    <p>Lawyers, regulators, and auditors can validate safely.</p>
-  </div>
+<div class="icon">💳</div>
+
+<h3>Student Ownership</h3>
+
+<p>
+Wallet-based credential control and full portability.
+</p>
+
+</div>
+
+<div class="card">
+
+<div class="icon">🏛️</div>
+
+<h3>Institution Protection</h3>
+
+<p>
+Reduce legal exposure and share verified credentials securely.
+</p>
+
+</div>
+
+<div class="card">
+
+<div class="icon">🔍</div>
+
+<h3>Independent Verification</h3>
+
+<p>
+Lawyers, regulators, and auditors can validate safely.
+</p>
+
+</div>
+
 </section>
 
+<!-- FOOTER -->
+
 <footer>
-  © 2026 Verify Stamp | Empowering Trust in Education
-  <div class="social">
-    <a href="#"><i class="fab fa-linkedin"></i></a>
-    <a href="#"><i class="fab fa-twitter-square"></i></a>
-    <a href="#"><i class="fas fa-envelope"></i></a>
-  </div>
+
+<p>
+© 2026 Verify Stamp | Empowering Trust in Education
+</p>
+
+<div class="socials">
+
+<a href="#">LinkedIn</a>
+<a href="#">Twitter</a>
+<a href="#">Email</a>
+
+</div>
+
 </footer>
 
 </body>
