@@ -1,180 +1,108 @@
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial, Helvetica, sans-serif;
-}
+<!DOCTYPE html>
+<html lang="en">
 
-body{
+<head>
 
-background:#e6e6e6;
-display:flex;
-flex-direction:column;
-align-items:center;
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-}
+<title>Verify Stamp</title>
 
-/* MAIN CONTAINER STYLE */
+<link rel="stylesheet" href="style.css">
 
-body > *{
+</head>
 
-width:1200px;
+<body>
 
-}
+<header class="navbar">
 
-/* NAVBAR */
+<div class="logo">
+<img src="Verify Stamp Logo.png">
+<span>Verify Stamp</span>
+</div>
 
-.navbar{
+<nav>
+<a href="#">Students</a>
+<a href="#">Institutions</a>
+<a href="verify.html">Verify</a>
+<a href="#">Login</a>
+</nav>
 
-display:flex;
-justify-content:space-between;
-align-items:center;
+</header>
 
-background:#0f172a;
-padding:18px 30px;
-border-radius:10px 10px 0 0;
 
-color:white;
+<section class="hero">
 
-}
+<h1>Secure. Verified. Protected.</h1>
 
-.logo{
-display:flex;
-align-items:center;
-gap:10px;
-font-weight:bold;
-}
+<p>
+Empowering institutions and giving students control of their credentials.
+</p>
 
-.logo img{
-width:28px;
-}
+<a href="verify.html" class="btn">
+Verify a Credential
+</a>
 
-nav a{
+</section>
 
-color:white;
-text-decoration:none;
-margin-left:25px;
-font-size:14px;
 
-}
+<section class="features">
 
-/* HERO SECTION */
+<div class="card">
 
-.hero{
+<div class="icon">■</div>
 
-text-align:center;
-padding:100px 20px;
+<h3>Student Ownership</h3>
 
-background:linear-gradient(
-135deg,
-#1e40af,
-#3b82f6,
-#8b5cf6
-);
+<p>
+Wallet-based credential control and full portability.
+</p>
 
-color:white;
+</div>
 
-}
 
-.hero h1{
+<div class="card">
 
-font-size:48px;
-margin-bottom:15px;
+<div class="icon">■</div>
 
-}
+<h3>Institution Protection</h3>
 
-.hero p{
+<p>
+Reduce legal exposure and share verified credentials securely.
+</p>
 
-font-size:18px;
-margin-bottom:30px;
+</div>
 
-}
 
-/* BUTTON */
+<div class="card">
 
-.btn{
+<div class="icon">■</div>
 
-background:#2563eb;
-color:white;
+<h3>Independent Verification</h3>
 
-padding:12px 25px;
+<p>
+Lawyers, regulators, and auditors can validate safely.
+</p>
 
-border-radius:8px;
-text-decoration:none;
+</div>
 
-font-weight:bold;
+</section>
 
-box-shadow:0 6px 12px rgba(0,0,0,0.3);
 
-}
+<footer>
 
-/* FEATURES */
+<p>
+© 2026 Verify Stamp | Empowering Trust in Education
+</p>
 
-.features{
+<div class="socials">
+<a href="#">LinkedIn</a>
+<a href="#">Twitter</a>
+<a href="#">Email</a>
+</div>
 
-display:flex;
-justify-content:space-between;
+</footer>
 
-gap:30px;
 
-padding:60px 40px;
-
-background:#1e3a8a;
-
-}
-
-.card{
-
-background:white;
-
-padding:30px;
-
-border-radius:10px;
-
-text-align:center;
-
-width:33%;
-
-box-shadow:0 10px 25px rgba(0,0,0,0.2);
-
-}
-
-.card .icon{
-
-font-size:40px;
-margin-bottom:15px;
-
-}
-
-.card h3{
-
-color:#1e40af;
-margin-bottom:10px;
-
-}
-
-/* FOOTER */
-
-footer{
-
-background:#0f172a;
-color:blue and purple ;
-
-display:flex;
-justify-content:space-between;
-
-padding:20px 30px;
-
-border-radius:0 0 10px 10px;
-
-font-size:14px;
-
-}
-
-.socials a{
-
-color:white;
-margin-left:15px;
-text-decoration:none;
-
-}
+</body>
+</html>
