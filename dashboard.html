@@ -86,12 +86,14 @@ data.forEach(item => {
 let verified = item.verify_stamp ? "✅ Verified" : "❌ Not Verified"
 
 let row = `
+let row = `
 <tr>
 <td>${item.student_name}</td>
-<td>${item.degree}</td>
+<td>${item.Degree}</td>
 <td>${item.institution}</td>
 <td>${verified}</td>
 </tr>
+`
 `
 
 table.innerHTML += row
