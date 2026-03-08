@@ -3,54 +3,106 @@
 
 <head>
 
-<title>Issuer Dashboard</title>
-<link rel="stylesheet" href="style.css">
+<title>Verify Stamp Dashboard</title>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<style>
+
+body{
+font-family: Arial;
+padding:40px;
+background:#f5f5f5;
+}
+
+h1{
+margin-bottom:20px;
+}
+
+table{
+border-collapse: collapse;
+width:100%;
+background:white;
+}
+
+th,td{
+border:1px solid #ddd;
+padding:12px;
+text-align:left;
+}
+
+th{
+background:black;
+color:white;
+}
+
+</style>
 
 </head>
 
 <body>
 
-<div class="dashboard">
+<h1>Credential Dashboard</h1>
 
-<div class="sidebar">
+<table id="credentials-table">
 
-<h2>Verify Stamp</h2>
-
-<a href="dashboard.html">Dashboard</a>
-<a href="issue.html">Issue Credential</a>
-<a href="verify.html">Verify Credential</a>
-
-</div>
-
-<div class="main">
-
-<h1>Issued Credentials</h1>
-
-<table class="table">
-
+<thead>
 <tr>
-<th>Name</th>
-<th>Credential</th>
-<th>Status</th>
+<th>Student</th>
+<th>Degree</th>
+<th>Institution</th>
+<th>Verified</th>
 </tr>
+</thead>
 
-<tr>
-<td>John Anderson</td>
-<td>Bachelor of Science</td>
-<td>Valid</td>
-</tr>
-
-<tr>
-<td>Sarah Davis</td>
-<td>MBA</td>
-<td>Valid</td>
-</tr>
+<tbody>
+</tbody>
 
 </table>
 
-</div>
+<script>
 
-</div>
+const supabaseUrl = "https://gzljplbeikhdztluwntc.supabase.co"
+
+const supabaseKey = "sb_publishable_7k8zxqK1f3kuP8sa5ioXKg_ld1bCNCy"
+
+const supabase = window.supabase.createClient(supabaseUrl, supabaseKey)
+
+async function loadCredentials(){
+
+const { data, error } = await supabase
+.from('credentials')
+.select('*')
+
+if(error){
+console.error(error)
+return
+}
+
+const table = document.querySelector("#credentials-table tbody")
+
+data.forEach(item => {
+
+let verified = item.verify_stamp ? "✅ Verified" : "❌ Not Verified"
+
+let row = `
+<tr>
+<td>${item.student_name}</td>
+<td>${item.degree}</td>
+<td>${item.institution}</td>
+<td>${verified}</td>
+</tr>
+`
+
+table.innerHTML += row
+
+})
+
+}
+
+loadCredentials()
+
+</script>
 
 </body>
 
